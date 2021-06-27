@@ -8,12 +8,13 @@ while True:
         data = jso.read()
         jsodct = json.loads(data)
         jso.close()
-
+    
+    clear = jsodct["clear"]
     length = jsodct["length"]
     charset = jsodct["charset"]
     
     i = input("passgen>")
     if i == "gen":print(passgen(length, charset))
-    elif i == clear:system("clear")
+    elif i == clear:system(clear)
     elif i == "exit":sys.exit()
     else:continue
