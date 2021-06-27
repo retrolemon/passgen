@@ -1,0 +1,23 @@
+from passgen import passgen
+from os import system
+from json import loads
+
+with open("config.json") as jso:
+    data = jso.read()
+    jsodct = loads(data)
+    jso.close()
+
+os = jsodct["os"]
+
+if os == "win":clear = "cls"
+elif os == "unix":clear = "clear"
+else:clear = "clear"
+
+length = jsodct["length"]
+charset = jsodct["charset"]
+
+while True:
+    i = input("passgen>")
+    if i == "gen":print(passgen(length, charset))
+    elif i == clear:system(clear)
+    else:continue
