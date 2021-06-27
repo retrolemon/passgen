@@ -1,5 +1,6 @@
 from passgen import passgen
 from os import system
+from shutil import rmtree
 from json import loads
 
 with open("config.json") as jso:
@@ -17,6 +18,7 @@ length = jsodct["length"]
 charset = jsodct["charset"]
 
 while True:
+    rmtree("__pycache__")
     i = input("passgen>")
     if i == "gen":print(passgen(length, charset))
     elif i == clear:system(clear)
